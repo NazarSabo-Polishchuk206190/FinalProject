@@ -10,6 +10,7 @@ import java.util.Map;
 import com.google.gson.*;
 import com.google.gson.reflect.*;
 
+
 public class Weather {
 
     static String API_KEY = "7a9cbbef0205f377c465a38e5aaf6696";
@@ -58,9 +59,6 @@ public class Weather {
             sb.append("Wind Angle: " + windMap.get("deg") +"\r\n");
 
             resToFile = sb.toString();
-
-
-
 
         } catch (IOException e) {
             System.out.print(e.getMessage());

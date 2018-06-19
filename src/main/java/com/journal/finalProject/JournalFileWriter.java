@@ -4,10 +4,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 public class JournalFileWriter {
 
-//    private String content = "Default";
-//    private String fileName = "Default";
+    private String content = "Default";
+    private String fileName = "Default";
 
     public static void WriteFile(String fileName, String content) {
         try {
@@ -31,19 +32,19 @@ public class JournalFileWriter {
         }
     }
 
-//    public void setFileName(String fileName){
-//        this.fileName = fileName;
-//    }
-//
-//    public String getFileName() {
-//        return fileName;
-//    }
-//
-//    public void setContent(String content) {
-//        this.content = content;
-//    }
-//
-//    public  String getContent(){
-//        return content;
-//    }
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setContent(String content){
+        this.content = content;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getContent() {
+        return content;
+    }
 }

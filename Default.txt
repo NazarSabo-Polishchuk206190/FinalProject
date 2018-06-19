@@ -1,4 +1,4 @@
-Current Temp: 25.0
-Current Humidity: 36.0
-Wind Speed: 4.6
+Current Temp: 23.0
+Current Humidity: 53.0
+Wind Speed: 5.1
 Wind Angle: 270.0
