@@ -9,6 +9,11 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 @SpringBootApplication
 public class FinalProjectApplication {
 
@@ -16,6 +21,7 @@ public class FinalProjectApplication {
 
 	public static void main(String args[]) {
 		SpringApplication.run(FinalProjectApplication.class);
+        JournalFileWriter.WriteFile("Default", "Default");
 	}
 
 	@Bean
@@ -31,4 +37,5 @@ public class FinalProjectApplication {
 			log.info(quote.toString());
 		};
 	}
+
 }
