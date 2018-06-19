@@ -5,18 +5,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Quote {
 
-    private String type;
+    private String temp;
     private Value value;
 
     public Quote() {
     }
 
-    public String getType() {
-        return type;
+    public String getTemp() {
+        return temp;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTemp(String temp) {
+        this.temp = temp;
     }
 
     public Value getValue() {
@@ -30,7 +30,7 @@ public class Quote {
     @Override
     public String toString() {
         return "Quote{" +
-                "type='" + type + '\'' +
+                "type='" + temp + '\'' +
                 ", value=" + value +
                 '}';
     }

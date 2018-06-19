@@ -21,7 +21,8 @@ public class FinalProjectApplication {
 
 	public static void main(String args[]) {
 		SpringApplication.run(FinalProjectApplication.class);
-        JournalFileWriter.WriteFile("Default", "Default");
+        JournalFileWriter.WriteFile("Default", Weather.getWeather());
+
 	}
 
 	@Bean
@@ -33,7 +34,7 @@ public class FinalProjectApplication {
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			Quote quote = restTemplate.getForObject(
-					"http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+					"http://api.openweathermap.org/data/2.5/forecast?id=3093133&APPID=7a9cbbef0205f377c465a38e5aaf6696", Quote.class);
 			log.info(quote.toString());
 		};
 	}

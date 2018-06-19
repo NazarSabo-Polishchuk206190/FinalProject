@@ -1,1 +1,4 @@
-Default
+Current Temp: 25.0
+Current Humidity: 36.0
+Wind Speed: 4.6
+Wind Angle: 270.0
