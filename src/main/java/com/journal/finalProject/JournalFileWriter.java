@@ -1,50 +1,90 @@
 package com.journal.finalProject;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.stream.Stream;
 
 
 public class JournalFileWriter {
 
-    private String content = "Default";
-    private String fileName = "Default";
-
-    public static void WriteFile(String fileName, String content) {
+    public static File createFile(String fileName){
+        File outputFile = null;
         try {
-
             File file = new  File(fileName + ".txt");
-
             // if file doesnt exists, then create it
             if (!file.exists()) {
                 file.createNewFile();
+                outputFile = file;
+            }else{
+                outputFile = file;
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        return outputFile;
+    }
+
+    public static void WriteFile(File file, String content) {
+        try {
+
+            String oldContent = readFromFile(file.getName()) + "\r\n";
 
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(content);
+            bw.write(oldContent+content);
             bw.close();
 
-            System.out.println("File has been recordered with filename: " + fileName + ".txt" );
+            System.out.println("File has been recordered with filename: " + file.getName());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public static String readFromFile(String fileName){
+        String output = null;
+        try {
+            System.out.print("Enter the file name with extension : ");
+
+            Scanner input = new Scanner(fileName);
+
+            File file = new File(input.nextLine());
+
+            input = new Scanner(file);
+
+            StringBuilder outputString = new StringBuilder("");
+
+            while (input.hasNextLine()) {
+                String line = input.nextLine();
+                outputString.append(line + "\r\n");
+            }
+            input.close();
+            output = outputString.toString();
+            System.out.print(output);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return output;
     }
 
-    public void setContent(String content){
-        this.content = content;
+    public static String fileNameGenerator(int DD, int MM, int YYYY){
+            String fileName;
+            String separator = "-";
+
+            fileName = String.valueOf(DD) + separator + String.valueOf(MM) + separator + String.valueOf(YYYY);
+
+            return fileName;
     }
 
-    public String getFileName() {
-        return fileName;
-    }
+    public static void newJournal(int DD, int MM, int YYYY, String content){
 
-    public String getContent() {
-        return content;
+        WriteFile(createFile(fileNameGenerator(DD, MM, YYYY)),Weather.getWeather()+content);
+
     }
 }
